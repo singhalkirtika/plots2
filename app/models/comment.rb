@@ -408,8 +408,12 @@ class Comment < ApplicationRecord
   end
 
   def self.get_node_from_urls_present(urls)
+    puts "fdfgfghfghfghfg"
     urls.each do |url|
+      puts "before"
       response = ::Net::HTTP.get_response(url)
+      puts response
+      puts "after"
       if response.class != Net::HTTPOK
         redirected_url = response['location']
         puts "redirected url is #{redirected_url}"
