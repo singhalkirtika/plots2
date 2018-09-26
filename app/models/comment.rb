@@ -378,6 +378,7 @@ class Comment < ApplicationRecord
         in_reply_to_tweet_id = tweet.in_reply_to_tweet_id
         parent_tweet = Client.status(in_reply_to_tweet_id, tweet_mode: "extended")
         parent_tweet_full_text = parent_tweet.attrs[:text] || parent_tweet.attrs[:full_text]
+        puts parent_tweet_full_text
         urls = URI.extract(parent_tweet_full_text)
         puts "url is #{urls}"
         node = get_node_from_urls_present(urls)
