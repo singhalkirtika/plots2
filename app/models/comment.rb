@@ -412,6 +412,7 @@ class Comment < ApplicationRecord
       response = ::Net::HTTP.get_response(url)
       if response.class != Net::HTTPOK
         redirected_url = response['location']
+        puts "redirected url is #{redirected_url}"
         if redirected_url.include? ENV["WEBSITE_HOST_PATTERN"]
           node_id = url.split("/")[-1]
           if !node_id.nil?
