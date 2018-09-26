@@ -370,6 +370,8 @@ class Comment < ApplicationRecord
     end
   end
 
+  require 'net/http'
+
   def self.check_and_add_tweets(tweets)
     tweets.each do |tweet|
       puts "now in reply inside"
@@ -407,17 +409,20 @@ class Comment < ApplicationRecord
 
   def self.get_node_from_urls_present(urls)
     urls.each do |url|
-      if url.include? ENV["WEBSITE_HOST_PATTERN"]
-        node_id = url.split("/")[-1]
-        if !node_id.nil?
-          node = Node.where(nid: node_id.to_i)
-          if node.any?
-            return node.first
+      response = ::Net::HTTP.get_response(url)
+      if response.class != Net::HTTPOK
+        redirected_url = response['location']
+        if redirected_url.include? ENV["WEBSITE_HOST_PATTERN"]
+          node_id = url.split("/")[-1]
+          if !node_id.nil?
+            node = Node.where(nid: node_id.to_i)
+            if node.any?
+              return node.first
+            end
           end
         end
       end
     end
-    
     return nil
   end
 
