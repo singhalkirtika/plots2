@@ -363,6 +363,8 @@ class Comment < ApplicationRecord
     check_and_add_tweets tweets
     puts ENV["TWEET_SEARCH"]
     puts "in without"
+    puts Comment.where.not(tweet_id: nil)
+    puts "after"
     tweets.each do |tweet|
       puts tweet.text
     end
