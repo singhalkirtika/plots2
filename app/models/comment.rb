@@ -372,15 +372,19 @@ class Comment < ApplicationRecord
 
   def self.check_and_add_tweets(tweets)
     tweets.each do |tweet|
+      puts "now in reply inside"
       if tweet.reply?
+        puts "now in reply"
         in_reply_to_tweet_id = tweet.in_reply_to_tweet_id
         parent_tweet = Client.status(in_reply_to_tweet_id, tweet_mode: "extended")
         parent_tweet_full_text = parent_tweet.attrs[:text] || parent_tweet.attrs[:full_text]
         urls = URI.extract(parent_tweet_full_text)
         node = get_node_from_urls_present(urls)
         unless node.nil?
+          puts "user name is #{tweet.user.screen_name}"
           twitter_user_name = tweet.user.screen_name
           tweet_email = find_email(twitter_user_name)
+          puts "tweeter_email is #{tweet_email}"
           users = User.where(email: tweet_email)
           if users.any?
             user = users.first
