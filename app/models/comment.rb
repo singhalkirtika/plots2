@@ -361,6 +361,7 @@ class Comment < ApplicationRecord
     end
     tweets = tweets.reverse
     check_and_add_tweets tweets
+    puts ENV["TWEET_SEARCH"]
     puts "in without"
     tweets.each do |tweet|
       puts tweet.text
