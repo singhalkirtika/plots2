@@ -14,16 +14,18 @@ Nothing. This issue is meant to welcome you to Open Source :) We are happy to wa
 
 - [ ] 🙋 **Claim this issue**: Comment below. If someone else has claimed it, ask if they've opened a pull request already and if they're stuck -- maybe you can help them solve a problem or move it along!
 
-- [ ] 📝 **Update** the file [$FILENAME]($BRANCH_URL) in the `$REPO` repository (press the little pen Icon) and edit the line as shown below. 
+- [ ] 📝 **Update** the file [$index]($https://github.com/publiclab/community-toolbox/blob/master/index.html) in the `community-toolbox` repository (press the little pen Icon) and edit the line as shown below. 
 
 [See this page](https://publiclab.github.io/community-toolbox/#r=all) for some help in taking your first steps!
 
-Below is a "diff" showing in red (and a `-`) which lines to remove, and in green (and a `+`) which lines to add:
-
-```diff
-$DIFF
+Add the following tag:
 ```
-
+<div class="row">
+      <div class="col-md-12">
+            <p> If you want to apply for the role of mentor with our organisation and are willing to guide the new open source contributors, go to <a href="https://github.com/publiclab/plots2/issues/3168#issuecomment-425937707">Call for Mentors</p>
+	</div>
+```
+![suggestions](https://user-images.githubusercontent.com/25261181/46363332-521ca780-c690-11e8-9ab3-343e5fa49c00.PNG)
 
 - [ ] 💾 **Commit** your changes
 
